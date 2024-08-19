@@ -1,7 +1,6 @@
 //function from export
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import $ from 'jquery';
 
 import {navElement} from './component/nav/nav';
 import {DefaultImage} from './component/defaultImage/defaultImage';
