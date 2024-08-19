@@ -24,7 +24,7 @@ function App() {
         <navElement.nav/>
         <main>
           <Routes>
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/setting" element={<SettingPage />} />
           </Routes>
         </main>

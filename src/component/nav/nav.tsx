@@ -23,7 +23,7 @@ function nav(){
         <i id={menuBtn} className="fa-solid fa-bars" onClick={navOpen}></i>
         <div id={navBar} >
             <div id="itemList">
-                <Link to="/home">
+                <Link to="/">
                     <button id="homeBtn">
                     <i className="fa-solid fa-house">首頁</i>
                     </button>
