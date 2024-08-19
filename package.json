@@ -1,5 +1,5 @@
 {
-  "homepage":"https://dannylin901022.github.io/Pixiv-Finder/home",
+  "homepage": "./home",
   "name": "pixiv-finder",
   "private": true,
   "version": "0.0.0",
@@ -10,7 +10,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predepoly": "npm run build",
-    "depoly": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "jquery": "^3.7.1",
