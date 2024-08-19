@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       {/* <div id="loader" className="loader"></div> */}
-      <Router>
+      <Router basename="/Pixiv-Finder">
         <navElement.nav/>
         <main>
           <Routes>
