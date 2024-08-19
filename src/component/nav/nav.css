@@ -1,0 +1,77 @@
+#menuBtn-close{
+    font-size: 30px ;
+    color: #333333 ;
+    position: fixed ;
+    top: 2px ;
+    left: 10px ;
+    cursor:  pointer ;
+    z-index: 1;
+    transition: 1s 
+}
+
+#menuBtn-open{
+    font-size: 30px ;
+    color: #eeebeb ;
+    position: fixed ;
+    top: 2px ;
+    left: 10px ;
+    cursor:  pointer ;
+    z-index: 1;
+    transition: 1s 
+}
+
+#navBar-close {
+    position: fixed ;
+    top: 0 ;
+    background-color: #7FEB8E ;
+    height: 0px ;
+    width: 100vw ;
+    opacity: 0.7;
+    transition: 1s 
+}
+
+#navBar-open{
+    position: fixed ;
+    top: 0 ;
+    background-color: #7FEB8E ;
+    height: 80px ;
+    width: 100vw ;
+    opacity: 0.7;
+    transition: 1s
+}
+
+#itemList {
+    display: flex ;
+    align-items: flex-end ;
+    height: 100% 
+}
+
+#homeBtn{
+    background-color: #7FEB8E 
+}
+
+#homeBtn i{
+    font-size: 20px ;
+    color: #333333 ;
+    display: flex ;
+    justify-content: space-between ;
+    width: 65px 
+}
+
+#homeBtn a, #settingBtn a{
+    font-size: inherit ;
+    color: inherit ;
+    font-weight:bolder ;
+}
+
+#settingBtn{
+    background-color: #7FEB8E 
+}
+
+#settingBtn i{
+    font-size: 20px ;
+    color: #333333 ;
+    display: flex ;
+    justify-content: space-between ;
+    width: 65px 
+}
