@@ -36,6 +36,7 @@ function App() {
 }
 
 function initAOS(){
+    const AOS = (window as any).AOS;
     AOS.init({
       // Global settings:
       disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
