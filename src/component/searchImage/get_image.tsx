@@ -5,7 +5,7 @@ async function get_image(file:File){
     formData.append('file', file);
     formData.append('api_key', apiKey);
 
-    let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16';
+    let url = 'https://saucenao.com/search.php?db=999&output_type=2&testmode=1&numres=16';
     // let url = '/api/search';
 
     await fetch(url, {
@@ -23,7 +23,7 @@ async function get_image(file:File){
 
   async function get_image_by_text(urlInput:string){
 
-    let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16&api_key=d2bacaebba6a54a89d3e9432905237167c3dfe23&url=';
+    let url = 'https://saucenao.com/search.php?db=999&output_type=2&testmode=1&numres=16&api_key=d2bacaebba6a54a89d3e9432905237167c3dfe23&url=';
     // let url = '/api/search';
 
     await fetch(url + urlInput, {

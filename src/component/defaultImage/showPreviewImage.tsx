@@ -39,7 +39,7 @@ function illustList(){
                 setHoverImage(imageUrl[currentSlideIndex - 1]);
                 setSlidesOpacity(1);
             }
-        },200);
+        },1000);
       }, []);
 
     const[slides, setSlides] = useState("");
