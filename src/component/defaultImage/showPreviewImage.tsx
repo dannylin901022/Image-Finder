@@ -33,13 +33,14 @@ function clickImage(){
 function illustList(){
     const[slidesOpacity, setSlidesOpacity] = useState(0);
     useEffect(() => {
-        setTimeout(() => {
+        const showImageTime = setInterval(() => {
             if(imageUrl[currentSlideIndex - 1] != null || imageUrl.length != 0){
                 setSlides(imageUrl[currentSlideIndex - 1]);
                 setHoverImage(imageUrl[currentSlideIndex - 1]);
                 setSlidesOpacity(1);
+                clearInterval(showImageTime);
             }
-        },1000);
+        },200);
       }, []);
 
     const[slides, setSlides] = useState("");
