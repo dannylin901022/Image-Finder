@@ -5,7 +5,9 @@ async function get_image(file:File){
     formData.append('file', file);
     formData.append('api_key', apiKey);
 
-    let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16';
+    // let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16';
+    let url = 'https://corsproxy.io/?https://saucenao.com/search.php?db=999&output_type=2&testmode=1&numres=16';
+
     // let url = '/api/search';
 
 
@@ -13,7 +15,6 @@ async function get_image(file:File){
       method:'POST',
       //headers: {'Content-Type': 'multipart/form-data'},
       body:formData,
-      mode:'no-cors'
     })
     .then(response => response.json())
     .then(data => search_data = data)
