@@ -3,9 +3,6 @@ import "./seachByWord.css"
 
 
 let searchData:any = null;
-let contentUrl:string[] = [];
-let title:string[] = [];
-let author:string[] = [];
 
 async function getImageBySearchWord(content:string){
     const url = "https://api.adoreanime.com/api/pixiv/search?word=" + content + "&mode=partial_match_for_tags&order=date_desc&page=1&size=30&include_translated_tag_results=true"
@@ -17,38 +14,111 @@ async function getImageBySearchWord(content:string){
       .catch(error => console.log(error));
 }
 
-function setImgType(data:any){
+async function setImgType(data:any){
     let imageUrl:string[] = [];
-    data.forEach((element:any) => {
-        let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
-        if(str=='jpg'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.jpg');
+    for(const element of data){
+        let tags:string[] = [];
+        for(const tag of element.tags){
+            tags.push(tag.name);
         }
-        else if(str=='png'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.png');
+        if(tags.includes('R-18')){
+            continue;
         }
-        else if(str=='gif'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.gif');
-        }
+        
 
-        contentUrl.push('https://www.pixiv.net/artworks/' + element.id);
-        title.push(element.title);
-        author.push(element.user.name);
-    });
+        // let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
+        // let url:string = '';
+        // if(str=='jpg'){
+        //     url = 'https://pixiv.cat/' + element.id + '.jpg';
+        // }
+        // else if(str=='png'){
+        //     url = 'https://pixiv.cat/' + element.id + '.png';
+        // }
+        // else if(str=='gif'){
+        //     url = 'https://pixiv.cat/' + element.id + '.gif';
+        // }
 
+        // if(element.page_count != 1){
+        //     url = 'https://pixiv.cat/' + element.id + '-1' + url.substring(url.length - 4);
+        // }
+        // imageUrl.push(url)
+
+        imageUrl.push('https://i.pixiv.cat/' + element.image_urls.large.substring(20,element.image_urls.large.length));
+
+    }
     return imageUrl;
 }
+
+async function setT(data:any){
+    let title:string[] = [];
+    for(const element of data){
+        let tags:string[] = [];
+        for(const tag of element.tags){
+            tags.push(tag.name);
+        }
+        if(tags.includes('R-18')){
+            continue;
+        }
+        title.push(element.title);
+    }
+    return title;
+}
+
+async function setC(data:any){
+    let contentUrl:string[] = [];
+    for(const element of data){
+        let tags:string[] = [];
+        for(const tag of element.tags){
+            tags.push(tag.name);
+        }
+        if(tags.includes('R-18')){
+            continue;
+        }
+        contentUrl.push('https://www.pixiv.net/artworks/' + element.id);
+    }
+    return contentUrl;
+}
+
+async function setA(data:any){
+    let author:string[] = [];
+    for(const element of data){
+        let tags:string[] = [];
+        for(const tag of element.tags){
+            tags.push(tag.name);
+        }
+        if(tags.includes('R-18')){
+            continue;
+        }
+        author.push(element.user.name);
+    }
+    return author;
+}
+
 function searchByWordPage(){
-    const [searchContent, setSearchContent] = useState<string[]>([]);
+    const [searchContent, setSearchContent] = useState<string[]>(['']);
+    const [contentUrl, setContentUrl] = useState<string[]>(['']);
+    const [title, setTitle] = useState<string[]>(['']);
+    const [author, setAuthor] = useState<string[]>(['']);
+
     useEffect(() => {
         const setData = async() => {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            let imgUrl = setImgType(searchData);
+            setTimeout(async () => {
+            let imgUrl:any = await setImgType(searchData);
             setSearchContent(imgUrl);
-            console.log(searchContent);
+
+            let titleSet:any = await setT(searchData);
+            setTitle(titleSet);
+            
+            let contentUrlSet:any = await setC(searchData);
+            setContentUrl(contentUrlSet);
+
+            let authorSet:any = await setA(searchData);
+            setAuthor(authorSet);
+
+        }, 1000);
         }
         setData();
-    });
+    },[searchData]);
 
     function clickImage(index:number){
         window.open(contentUrl[index],'_blank');
@@ -60,7 +130,7 @@ function searchByWordPage(){
             <div id="searchImgMain">
                 {searchContent.map((item, index) => (
                     <><div className="imgArea">
-                        <img className="searchImg" src={item} onClick={() => clickImage(index)}></img>
+                        <img className="searchImg" src={item} alt="imageFailed" onClick={() => clickImage(index)}></img>
                         <p className="title">{title[index]}</p>
                         <p className="author">{author[index]}</p>
                     </div></>

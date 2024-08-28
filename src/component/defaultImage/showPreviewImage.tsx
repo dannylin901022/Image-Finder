@@ -11,20 +11,30 @@ async function showPreviewImage(data:any){
     let illusts = data.illusts;
     console.log("defaultImage：");
     console.log(data);
-    illusts.forEach((element:any) => {
-        let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
-        if(str=='jpg'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.jpg');
+    for(const element of illusts){
+        // let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
+        // if(str=='jpg'){
+        //     imageUrl.push('https://pixiv.cat/' + element.id + '.jpg');
+        // }
+        // else if(str=='png'){
+        //     imageUrl.push('https://pixiv.cat/' + element.id + '.png');
+        // }
+        // else if(str=='gif'){
+        //     imageUrl.push('https://pixiv.cat/' + element.id + '.gif');
+        // }
+
+        let tags:string[] = [];
+        for(const tag of element.tags){
+            tags.push(tag.name);
         }
-        else if(str=='png'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.png');
-        }
-        else if(str=='gif'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.gif');
+        if(tags.includes('R-18')){
+            continue;
         }
 
+        imageUrl.push('https://i.pixiv.cat/' + element.image_urls.large.substring(20,element.image_urls.large.length))
+
         url.push('https://www.pixiv.net/artworks/' + element.id);
-    });
+    }
 }
 
 
