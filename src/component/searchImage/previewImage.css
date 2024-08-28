@@ -1,10 +1,11 @@
 #searchDialogBtn {
-    background-color:#7FEB8E
+    background-color:#A5F1B0
 }
 
 #searchDialogBtn i{
     font-size:20px;
 	color:#333333;
+    opacity: 0.7;
 	display:flex;
 	justify-content:space-between;
 	width:110px

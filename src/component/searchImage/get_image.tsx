@@ -5,7 +5,12 @@ async function get_image(file:File){
     formData.append('file', file);
     formData.append('api_key', apiKey);
 
+    //原本的方法：proxy server(github page不吃)
     // let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16';
+    
+
+    //這邊改用corsproxy.io繞過cors，但因為是公共的cors代理伺服器，有安全疑慮，但因為上到github page不能用原本的方法，所以只能先找個替代方案
+    //有時間再看看有沒有辦法改用自建代理伺服器
     let url = 'https://corsproxy.io/?https://saucenao.com/search.php?db=999&output_type=2&testmode=1&numres=16';
 
     // let url = '/api/search';

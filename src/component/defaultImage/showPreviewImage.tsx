@@ -9,13 +9,15 @@ let mousePoint = true;
 
 async function showPreviewImage(data:any){
     let illusts = data.illusts;
+    console.log("defaultImage：");
+    console.log(data);
     illusts.forEach((element:any) => {
         let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
         if(str=='jpg'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.png');
+            imageUrl.push('https://pixiv.cat/' + element.id + '.jpg');
         }
         else if(str=='png'){
-            imageUrl.push('https://pixiv.cat/' + element.id + '.jpg');
+            imageUrl.push('https://pixiv.cat/' + element.id + '.png');
         }
         else if(str=='gif'){
             imageUrl.push('https://pixiv.cat/' + element.id + '.gif');

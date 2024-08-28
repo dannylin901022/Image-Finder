@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import {navElement} from './component/nav/nav';
 import {DefaultImage} from './component/defaultImage/defaultImage';
-import SearchByWordPage from './component/searchWord/seachByWord';
+import {searchPage} from './component/searchWord/seachByWord';
 
 import './App.css'
 
 const HomePage: React.FC = () => <DefaultImage.defaultImage/>
-const SettingPage: React.FC = () => <SearchByWordPage/>
+const SettingPage: React.FC = () => <searchPage.searchByWordPage/>
 
 function App() {
   useEffect(() => {
