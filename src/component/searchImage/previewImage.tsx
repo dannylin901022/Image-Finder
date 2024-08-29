@@ -2,11 +2,11 @@ import $ from "jquery";
 import { ChangeEvent } from "react";
 import {getImage} from "./get_image.tsx";
 import {show_search_result} from "./show_search_result.tsx"
+import { imgCut } from "./cutImage.tsx";
 
 import "./previewImage.css";
 
-function previewImage() {
-  let file: any = null;
+let file: any = null;
 
   const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -16,8 +16,11 @@ function previewImage() {
     let reader = new FileReader();
     reader.onload = function (event) {
       $("#upload_img").attr("src", event.target?.result as string);
+      $("#cutBtn").css("display","block");
     };
     reader.readAsDataURL(file);
+
+    imgCut.countReset();
   };
 
   function openDialog() {
@@ -33,7 +36,10 @@ function previewImage() {
     searchList.innerHTML = null;
     let urlInput: any = document.getElementById("url_input");
     urlInput.value = '';
-    
+    $("#cutBtn").css("display","none");
+
+    imgCut.countReset();
+
     searchDialog.close();
   }
 
@@ -60,6 +66,7 @@ function previewImage() {
     $("#upload_img").attr("src", thumbnailUrl);
   }
 
+function previewImage() {
   return (
     <>
       <button id="searchDialogBtn" onClick={openDialog}>
@@ -70,10 +77,19 @@ function previewImage() {
         id="searchDialog"
         data-aos="fade-up"
       >
-        <img
-            id="upload_img"
-            src=""
-          />
+        <div id="previewArea">
+          <button id="cutBtn" onClick={() => {imgCut.openDialog($("#upload_img").attr("src"))}}>裁切圖片</button>
+          <dialog
+            id="cutDialog"
+            data-aos="fade-up"
+          >
+            <imgCut.ImageCropper/>
+          </dialog>
+          <img
+              id="upload_img"
+              src=""
+            />
+          </div>
         <div id='dialogArea'>          
               <form action="./uploadFiles" encType="multipart/form-data"></form>
               <div>
@@ -112,4 +128,4 @@ function previewImage() {
   );
 }
 
-export default previewImage;
+export const preview = {previewImage,uploadImage};

@@ -22,7 +22,7 @@
     border-radius: 10px;
     max-height: 300px;
 	max-width: 300px;
-	margin-top:30vh
+	margin-top:10px;
 }
 
 #dialogArea {
@@ -61,4 +61,20 @@
 	right: 10px;
 	top: 10px;
 	cursor: pointer
+}
+
+#previewArea{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    margin: auto;
+    margin-top: 150px;
+}
+
+#cutBtn{
+    width: 100px;
+    font-size: 10px;
+    display: none;
+    border: 1px solid;
 }

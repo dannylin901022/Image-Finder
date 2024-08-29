@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PreviewImage from '../searchImage/previewImage.tsx';
+import {preview} from '../searchImage/previewImage.tsx';
 import "./nav.css";
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ function nav(){
                     <i className="fa-solid fa-house">首頁</i>
                     </button>
                 </Link>
-                <PreviewImage/>
+                <preview.previewImage/>
                 <Link to="/setting">
                     <button id="settingBtn">
                     <i className="fa-solid fa-gear">設定</i>
