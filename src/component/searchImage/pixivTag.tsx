@@ -1,10 +1,17 @@
 async function searchTag(searchtData:any){
     let tags:any = [];
+    let id:string = '';
 
     let url = 'https://api.adoreanime.com/api/pixiv/illust?id=';
     // let url = '/api/search';
 
-    await fetch(url + searchtData[0].data.pixiv_id, {
+    let i = 0;
+    while(searchtData[i].data.ext_urls[0].indexOf('pixiv') !== -1){
+        id = searchtData[i].data.pixiv_id;
+        i++;
+    }
+
+    await fetch(url + id, {
         method:'GET',
     })
     .then(response => response.json())

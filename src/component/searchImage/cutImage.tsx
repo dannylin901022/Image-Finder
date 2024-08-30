@@ -1,5 +1,7 @@
 import { useState} from 'react';
 import ReactCrop, { Crop } from 'react-image-crop';
+import { preview } from './previewImage';
+
 import 'react-image-crop/dist/ReactCrop.css';
 import './cutImage.css'
 
@@ -57,10 +59,15 @@ function ImageCropper(){
 
         const croppedImage = canvas.toDataURL('image/jpeg');
 
-        console.log(croppedImage);
-        console.log(typeof(crop));
         let upload_img:any = document.getElementById("upload_img");
         upload_img.src = croppedImage;
+
+        fetch(croppedImage)
+            .then((res) => res.blob())
+            .then((blob) => {
+                const newFile = new File([blob], 'cropped-image.jpg', { type: 'image/jpeg' });
+                preview.setFileAfterCut(newFile);
+            });
     };
   
     return (

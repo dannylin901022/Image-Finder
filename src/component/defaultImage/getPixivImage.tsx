@@ -6,6 +6,7 @@ async function getPixivImage(){
 
     await fetch(url, {
         method:'GET',
+        referrerPolicy: "unsafe-url",
     })
     .then(response => response.json())
     .then(data => previewImage = data)

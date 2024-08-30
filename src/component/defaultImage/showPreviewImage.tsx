@@ -9,8 +9,6 @@ let mousePoint = true;
 
 async function showPreviewImage(data:any){
     let illusts = data.illusts;
-    console.log("defaultImage：");
-    console.log(data);
     for(const element of illusts){
         // let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
         // if(str=='jpg'){

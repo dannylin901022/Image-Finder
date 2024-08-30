@@ -8,6 +8,12 @@ import "./previewImage.css";
 
 let file: any = null;
 
+  const setFileAfterCut = (cutFile:any) =>{
+    console.log(file);
+    console.log(cutFile);
+    file = cutFile;
+  }
+
   const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       file = e.target.files[0];
@@ -128,4 +134,4 @@ function previewImage() {
   );
 }
 
-export const preview = {previewImage,uploadImage};
+export const preview = {previewImage,uploadImage,setFileAfterCut};
