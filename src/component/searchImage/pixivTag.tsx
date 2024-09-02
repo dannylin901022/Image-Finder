@@ -1,22 +1,27 @@
 async function searchTag(searchtData:any){
     let tags:any = [];
     let id:string = '';
+    let i = 0;
 
-    let url = 'https://api.adoreanime.com/api/pixiv/illust?id=';
+    let url = 'https://hibiapi.getloli.com/api/pixiv/illust?id=';
     // let url = '/api/search';
 
-    let i = 0;
-    while(searchtData[i].data.ext_urls[0].indexOf('pixiv') !== -1){
+    while(tags.length <= 0){
+        while(searchtData[i].header.thumbnail.indexOf('pixiv') == -1){
+            i++;
+        }
+
         id = searchtData[i].data.pixiv_id;
+    
+        await fetch(url + id, {
+            method:'GET',
+        })
+        .then(response => response.json())
+        .then(data => tags = data.illust.tags)
+        .catch(error => console.log(error));
+
         i++;
     }
-
-    await fetch(url + id, {
-        method:'GET',
-    })
-    .then(response => response.json())
-    .then(data => tags = data.illust.tags)
-    .catch(error => console.log(error));
 
     return tags;
 }

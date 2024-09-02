@@ -57,17 +57,26 @@ function illustList(){
     const[hoverImage, setHoverImage] = useState("");
 
     function changeSlide(index:number){
-        mousePoint = false;
-        currentSlideIndex = currentSlideIndex + index;
-     
-        if (currentSlideIndex < 1) {
-            currentSlideIndex = imageUrl.length;
-        } else if (currentSlideIndex > imageUrl.length) {
-            currentSlideIndex = 1;
-        }
-    
-        setSlides(imageUrl[currentSlideIndex - 1]);
-        setHoverImage(imageUrl[currentSlideIndex - 1]);
+        let slideImg:any = document.getElementById("slideImg");
+        slideImg.style.opacity = "0";
+
+
+        setTimeout(() => {
+            mousePoint = false;
+            currentSlideIndex = currentSlideIndex + index;
+        
+            if (currentSlideIndex < 1) {
+                currentSlideIndex = imageUrl.length;
+            } else if (currentSlideIndex > imageUrl.length) {
+                currentSlideIndex = 1;
+            }
+        
+            setSlides(imageUrl[currentSlideIndex - 1]);
+            setHoverImage(imageUrl[currentSlideIndex - 1]);
+
+            slideImg.style.opacity = "1";
+        }, 500);
+
     }
 
 

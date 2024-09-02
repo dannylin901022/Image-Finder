@@ -5,7 +5,7 @@ import "./seachByWord.css"
 let searchData:any = null;
 
 async function getImageBySearchWord(content:string){
-    const url = "https://api.adoreanime.com/api/pixiv/search?word=" + content + "&mode=partial_match_for_tags&order=date_desc&page=1&size=30&include_translated_tag_results=true"
+    const url = "https://hibiapi.getloli.com/api/pixiv/search?word=" + content + "&mode=partial_match_for_tags&order=date_desc&page=1&size=30&include_translated_tag_results=true&search_ai_type=true"
     await fetch(url,{
             method:'GET',
         })
@@ -21,7 +21,7 @@ async function setImgType(data:any){
         for(const tag of element.tags){
             tags.push(tag.name);
         }
-        if(tags.includes('R-18')){
+        if(tags.includes('R-18') || tags.includes('R-18G')){
             continue;
         }
         
@@ -49,14 +49,14 @@ async function setImgType(data:any){
     return imageUrl;
 }
 
-async function setT(data:any){
+async function setT(data:any){ //setTitle
     let title:string[] = [];
     for(const element of data){
         let tags:string[] = [];
         for(const tag of element.tags){
             tags.push(tag.name);
         }
-        if(tags.includes('R-18')){
+        if(tags.includes('R-18') || tags.includes('R-18G')){
             continue;
         }
         title.push(element.title);
@@ -64,14 +64,14 @@ async function setT(data:any){
     return title;
 }
 
-async function setC(data:any){
+async function setC(data:any){ //setContentUrl
     let contentUrl:string[] = [];
     for(const element of data){
         let tags:string[] = [];
         for(const tag of element.tags){
             tags.push(tag.name);
         }
-        if(tags.includes('R-18')){
+        if(tags.includes('R-18') || tags.includes('R-18G')){
             continue;
         }
         contentUrl.push('https://www.pixiv.net/artworks/' + element.id);
@@ -79,7 +79,7 @@ async function setC(data:any){
     return contentUrl;
 }
 
-async function setA(data:any){
+async function setA(data:any){ //setAuthor
     let author:string[] = [];
     for(const element of data){
         let tags:string[] = [];
@@ -95,10 +95,10 @@ async function setA(data:any){
 }
 
 function searchByWordPage(){
-    const [searchContent, setSearchContent] = useState<string[]>(['']);
-    const [contentUrl, setContentUrl] = useState<string[]>(['']);
-    const [title, setTitle] = useState<string[]>(['']);
-    const [author, setAuthor] = useState<string[]>(['']);
+    const [searchContent, setSearchContent] = useState<string[]>([]);
+    const [contentUrl, setContentUrl] = useState<string[]>([]);
+    const [title, setTitle] = useState<string[]>([]);
+    const [author, setAuthor] = useState<string[]>([]);
 
     useEffect(() => {
         const setData = async() => {
@@ -126,14 +126,13 @@ function searchByWordPage(){
 
     return(
         <>
-        {/* 有些圖沒辦法正常顯示 */}
             <div id="searchImgMain">
                 {searchContent.map((item, index) => (
-                    <><div className="imgArea">
+                    <div key={index}><div className="imgArea">
                         <img className="searchImg" src={item} alt="imageFailed" onClick={() => clickImage(index)}></img>
                         <p className="title">{title[index]}</p>
                         <p className="author">{author[index]}</p>
-                    </div></>
+                    </div></div>
                 ))}
             </div>
         </>

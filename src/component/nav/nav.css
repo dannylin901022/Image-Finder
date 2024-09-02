@@ -60,7 +60,7 @@
     width: 65px 
 }
 
-#homeBtn a, #settingBtn a{
+#homeBtn a, #settingBtn a, #searchPageBtn a{
     font-size: inherit ;
     color: inherit ;
     font-weight:bolder ;
@@ -78,3 +78,58 @@
     justify-content: space-between ;
     width: 65px 
 }
+
+#searchPageBtn{
+    background-color: #A5F1B0 
+}
+
+#searchPageBtn i{
+    font-size:20px;
+	color:#333333;
+    opacity: 0.7;
+	display:flex;
+	justify-content:space-between;
+	width:110px
+}
+
+#searchCounter{
+    display: none;
+}
+
+
+/* loader */
+.loader {
+    width: 200px;
+    aspect-ratio: 1;
+    display: grid;
+    position: fixed;
+    top: calc(50vh - 100px);
+    left: calc(50vw - 100px);
+    z-index: 1;
+    opacity: 0;
+    transition: 1s;
+  }
+  .loader::before,
+  .loader::after {    
+    content:"";
+    grid-area: 1/1;
+    --c:no-repeat radial-gradient(farthest-side,#2ddc47 92%,#0000);
+    background: 
+      var(--c) 50%  0, 
+      var(--c) 50%  100%, 
+      var(--c) 100% 50%, 
+      var(--c) 0    50%;
+    background-size: 36px 36px;
+    animation: l12 1s infinite;
+  }
+  .loader::before {
+    margin: 4px;
+    filter: hue-rotate(45deg);
+    background-size: 20px 20px;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes l12 { 
+    100%{transform: rotate(.5turn)}
+  }
+  

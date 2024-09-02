@@ -67,6 +67,7 @@ function ImageCropper(){
             .then((blob) => {
                 const newFile = new File([blob], 'cropped-image.jpg', { type: 'image/jpeg' });
                 preview.setFileAfterCut(newFile);
+
             });
     };
   

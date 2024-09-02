@@ -9,8 +9,6 @@ import "./previewImage.css";
 let file: any = null;
 
   const setFileAfterCut = (cutFile:any) =>{
-    console.log(file);
-    console.log(cutFile);
     file = cutFile;
   }
 
@@ -75,7 +73,7 @@ let file: any = null;
 function previewImage() {
   return (
     <>
-      <button id="searchDialogBtn" onClick={openDialog}>
+      <button id="searchDialogBtn" className='menuBtn' onClick={openDialog}>
         <i className="fa-solid fa-image">圖片搜尋</i>
       </button>
 

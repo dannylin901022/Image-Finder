@@ -39,7 +39,7 @@
 #slideImg {
     width: 100%;
     display: block;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 #hoverImage {

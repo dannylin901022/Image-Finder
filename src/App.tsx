@@ -9,7 +9,20 @@ import {searchPage} from './component/searchWord/seachByWord';
 import './App.css'
 
 const HomePage: React.FC = () => <DefaultImage.defaultImage/>
-const SettingPage: React.FC = () => <searchPage.searchByWordPage/>
+
+const SearchPage: React.FC = () =>{
+  let counter:any = document.getElementById("searchCounter");
+  let searchCounter:number = 0;
+  if(counter != null){
+    searchCounter = Number(counter.value);
+  }
+  if(searchCounter > 0){
+      return <searchPage.searchByWordPage/>
+  }
+  else{
+    alert("尚未有搜尋紀錄");
+  }  
+}
 
 function App() {
   useEffect(() => {
@@ -19,13 +32,13 @@ function App() {
 
   return (
     <>
-      {/* <div id="loader" className="loader"></div> */}
-      <Router basename="/Pixiv-Finder">
+      <Router basename="/Image-Finder/">
         <navElement.nav/>
-        <main>
+        <main id='main'>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/setting" element={<SettingPage />} />
+            {/* <Route path="/setting" element={<SettingPage />} /> */}
+            <Route path="/search" element={<SearchPage/>} />
           </Routes>
         </main>
     </Router>
