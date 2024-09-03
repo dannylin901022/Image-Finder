@@ -1,4 +1,4 @@
-import { config } from "../config";
+import { config } from "../configAPI";
 
 async function searchTag(searchtData:any){
     let tags:any = [];

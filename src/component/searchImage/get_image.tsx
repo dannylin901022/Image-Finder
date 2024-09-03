@@ -1,4 +1,4 @@
-import { config } from "../config";
+import { config } from "../configAPI";
 
 let search_data:any = {};
 async function get_image(file:File){

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-import { config } from './component/config.tsx'
+import { config } from './component/configAPI.tsx'
 
 await config.setNewHibiAPI();
 

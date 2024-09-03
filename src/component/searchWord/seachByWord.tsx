@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { config } from "../config"
+import { config } from "../configAPI"
 import "./seachByWord.css"
 
 
