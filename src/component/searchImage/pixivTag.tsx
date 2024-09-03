@@ -1,9 +1,11 @@
+import { config } from "../config";
+
 async function searchTag(searchtData:any){
     let tags:any = [];
     let id:string = '';
     let i = 0;
 
-    let url = 'https://hibiapi.getloli.com/api/pixiv/illust?id=';
+    let url = config.getHibiAPI() + 'pixiv/illust?id=';
     // let url = '/api/search';
 
     while(tags.length <= 0){

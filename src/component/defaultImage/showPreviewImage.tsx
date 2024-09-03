@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { config } from '../config';
 import './showPreviewImage.css';
 
 
@@ -29,9 +30,9 @@ async function showPreviewImage(data:any){
             continue;
         }
 
-        imageUrl.push('https://i.pixiv.cat/' + element.image_urls.large.substring(20,element.image_urls.large.length))
+        imageUrl.push(config.porxyImage + element.image_urls.large.substring(20,element.image_urls.large.length))
 
-        url.push('https://www.pixiv.net/artworks/' + element.id);
+        url.push(config.porxyImage + 'artworks/' + element.id);
     }
 }
 

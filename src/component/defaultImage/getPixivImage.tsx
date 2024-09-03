@@ -1,7 +1,9 @@
+import {config} from "../config"
+
 let previewImage:any = {};
 
 async function getPixivImage(){
-    let url = 'https://hibiapi.getloli.com/api/pixiv/illust_new?content_type=illust';
+    let url = config.getHibiAPI() + 'pixiv/illust_new?content_type=illust';
     // let url = '/api/search';
 
     await fetch(url, {

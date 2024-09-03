@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { config } from "../config"
 import "./seachByWord.css"
 
 
 let searchData:any = null;
 
 async function getImageBySearchWord(content:string){
-    const url = "https://hibiapi.getloli.com/api/pixiv/search?word=" + content + "&mode=partial_match_for_tags&order=date_desc&page=1&size=30&include_translated_tag_results=true&search_ai_type=true"
+    const url = config.getHibiAPI() + "pixiv/search?word=" + content + "&mode=partial_match_for_tags&order=date_desc&page=1&size=30&include_translated_tag_results=true&search_ai_type=true"
     await fetch(url,{
             method:'GET',
         })
@@ -43,7 +44,7 @@ async function setImgType(data:any){
         // }
         // imageUrl.push(url)
 
-        imageUrl.push('https://i.pixiv.cat/' + element.image_urls.large.substring(20,element.image_urls.large.length));
+        imageUrl.push(config.porxyImage + element.image_urls.large.substring(20,element.image_urls.large.length));
 
     }
     return imageUrl;
@@ -74,7 +75,7 @@ async function setC(data:any){ //setContentUrl
         if(tags.includes('R-18') || tags.includes('R-18G')){
             continue;
         }
-        contentUrl.push('https://www.pixiv.net/artworks/' + element.id);
+        contentUrl.push(config.pixivUrl + 'artworks/' + element.id);
     }
     return contentUrl;
 }
