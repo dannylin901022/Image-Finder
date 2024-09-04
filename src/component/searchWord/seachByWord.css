@@ -14,16 +14,16 @@
     height: 300px;
 }
 
+.imgArea:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .searchImg{
     width: 200px;
     height: 200px;
     border-radius: 10px;
     margin-bottom: -10px;
-}
-
-.searchImg:hover{
-    opacity: 0.8;
-    cursor: pointer;
 }
 
 .title{

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { config } from "../configAPI"
 import "./seachByWord.css"
-
+import { Link } from "react-router-dom";
+import { navElement } from "../nav/nav";
+import { imagePage } from "../imagePage/imagePage";
 
 let searchData:any = null;
 
@@ -25,25 +27,6 @@ async function setImgType(data:any){
         if(tags.includes('R-18') || tags.includes('R-18G')){
             continue;
         }
-        
-
-        // let str = element.image_urls.large.substring(element.image_urls.large.length - 3);
-        // let url:string = '';
-        // if(str=='jpg'){
-        //     url = 'https://pixiv.cat/' + element.id + '.jpg';
-        // }
-        // else if(str=='png'){
-        //     url = 'https://pixiv.cat/' + element.id + '.png';
-        // }
-        // else if(str=='gif'){
-        //     url = 'https://pixiv.cat/' + element.id + '.gif';
-        // }
-
-        // if(element.page_count != 1){
-        //     url = 'https://pixiv.cat/' + element.id + '-1' + url.substring(url.length - 4);
-        // }
-        // imageUrl.push(url)
-
         imageUrl.push(config.porxyImage + element.image_urls.large.substring(20,element.image_urls.large.length));
 
     }
@@ -121,19 +104,26 @@ function searchByWordPage(){
         setData();
     },[searchData]);
 
+    // function clickImage(index:number){
+    //     window.open(contentUrl[index],'_blank');
+    // }
+
     function clickImage(index:number){
-        window.open(contentUrl[index],'_blank');
+        navElement.changePage("image");
+        imagePage.getImage(contentUrl[index].substring(31,contentUrl[index].length));
     }
 
     return(
         <>
             <div id="searchImgMain">
                 {searchContent.map((item, index) => (
-                    <div key={index}><div className="imgArea">
-                        <img className="searchImg" src={item} alt="imageFailed" onClick={() => clickImage(index)}></img>
-                        <p className="title">{title[index]}</p>
-                        <p className="author">{author[index]}</p>
-                    </div></div>
+                    <div key={index}>
+                        <Link className="imgArea" to="/image" onClick={() => clickImage(index)}>
+                            <img className="searchImg" src={item} alt="imageFailed"></img>
+                            <p className="title">{title[index]}</p>
+                            <p className="author">{author[index]}</p>
+                        </Link>
+                    </div>
                 ))}
             </div>
         </>

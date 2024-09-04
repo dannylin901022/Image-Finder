@@ -5,10 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {navElement} from './component/nav/nav';
 import {DefaultImage} from './component/defaultImage/defaultImage';
 import {searchPage} from './component/searchWord/seachByWord';
+import { setting } from './component/setting/settingPage';
+import { imagePage } from './component/imagePage/imagePage';
 
 import './App.css'
 
 const HomePage: React.FC = () => <DefaultImage.defaultImage/>
+
+const SettingPage: React.FC = () => <setting.settingPage/>
 
 const SearchPage: React.FC = () =>{
   let counter:any = document.getElementById("searchCounter");
@@ -24,6 +28,8 @@ const SearchPage: React.FC = () =>{
   }  
 }
 
+const ImagePage: React.FC = () => <imagePage.showImage/>
+
 function App() {
   useEffect(() => {
     initAOS();
@@ -37,8 +43,9 @@ function App() {
         <main id='main'>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* <Route path="/setting" element={<SettingPage />} /> */}
+            <Route path="/setting" element={<SettingPage />} />
             <Route path="/search" element={<SearchPage/>} />
+            <Route path="/image" element={<ImagePage/>} />
           </Routes>
         </main>
     </Router>
