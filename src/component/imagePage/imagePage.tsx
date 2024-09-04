@@ -16,18 +16,18 @@ async function getImage(id:string){
 
 function showImage(){
     const [imageContent, setImageContent] = useState<string>('');
-    const [imageUrl, setImageUrl] = useState<string>('');
+    // const [imageUrl, setImageUrl] = useState<string>('');
     const [title, setTitle] = useState<string>('');
-    const [author, setAuthor] = useState<string>('');
+    // const [author, setAuthor] = useState<string>('');
     const [tags, setTags] = useState<string[]>([]);
 
     useEffect(() => {
         const setData = async() => {
             setTimeout(async () => {
                 setImageContent(config.porxyImage + imageData.image_urls.large.substring(20,imageData.image_urls.large.length));
-                setImageUrl(config.pixivUrl + 'artworks/' + imageData.id);
+                // setImageUrl(config.pixivUrl + 'artworks/' + imageData.id);
                 setTitle(imageData.title);
-                setAuthor(imageData.user.name);
+                // setAuthor(imageData.user.name);
                 setTags(imageData.tags);
         }, 1000);
         }
