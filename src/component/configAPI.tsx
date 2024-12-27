@@ -29,10 +29,10 @@ let pixivUrl:string = "https://www.pixiv.net/";
 
 let porxyImage:string = "https://i.pixiv.cat/";
 
-let porxtCORS:string = "https://corsproxy.io/?";
+let porxtCORS:string = "https://cors-anywhere.herokuapp.com/";
 
 let saucenaoAPI:string = "https://saucenao.com/search.php?dbs[]=5&dbs[]=41&output_type=2&testmode=1&numres=10&hide=2";
-const saucenaoAPIkey = "d2bacaebba6a54a89d3e9432905237167c3dfe23";
+const saucenaoAPIkey = "60808f72fc93b3d19184a04d0c60966d9d9e20c7";
 
 
 export const config = {setNewHibiAPI,getHibiAPI,porxyImage,porxtCORS,saucenaoAPI,pixivUrl,saucenaoAPIkey};
