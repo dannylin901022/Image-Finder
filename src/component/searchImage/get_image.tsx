@@ -12,7 +12,7 @@ async function get_image(file:File){
     // let url = '/api/saucenao/search.php?db=999&output_type=2&testmode=1&numres=16';
     
 
-    //這邊改用corsfix繞過cors，但因為是公共的cors代理伺服器，有安全疑慮，但因為上到github page不能用原本的方法，所以只能先找個替代方案
+    //這邊改用CORS Anywhere繞過cors，但因為是公共的cors代理伺服器，有安全疑慮，但因為上到github page不能用原本的方法，所以只能先找個替代方案
     //有時間再看看有沒有辦法改用自建代理伺服器
     let url = config.porxtCORS + config.saucenaoAPI;
     // let url = config.saucenaoAPI;
@@ -29,6 +29,7 @@ async function get_image(file:File){
     .catch(error => {
       console.log(error)
       search_data = null;
+      window.open('https://cors-anywhere.herokuapp.com/https://saucenao.com/search.php?dbs[]=5&dbs[]=41&output_type=2&testmode=1&numres=10&hide=2');
     });
 
     console.log(search_data);
