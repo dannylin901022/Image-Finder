@@ -29,7 +29,8 @@ let pixivUrl:string = "https://www.pixiv.net/";
 
 let porxyImage:string = "https://i.pixiv.cat/";
 
-let porxtCORS:string = "https://cors-anywhere.herokuapp.com/";
+// let porxtCORS:string = "https://cors-anywhere.herokuapp.com/";
+let porxtCORS:string = "https://proxy.corsfix.com/?";
 
 let saucenaoAPI:string = "https://saucenao.com/search.php?dbs[]=5&dbs[]=41&output_type=2&testmode=1&numres=10&hide=2";
 const saucenaoAPIkey = "60808f72fc93b3d19184a04d0c60966d9d9e20c7";
