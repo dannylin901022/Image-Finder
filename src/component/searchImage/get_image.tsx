@@ -29,6 +29,7 @@ async function get_image(file:File){
     .catch(error => {
       console.log(error)
       search_data = null;
+      alert("本網站'圖片搜尋'功能目前是透過CORS Anywhere來繞過CORS限制，在使用該功能時需開啟臨時金鑰。\n\n~0ω0)/");
       window.open('https://cors-anywhere.herokuapp.com/https://saucenao.com/search.php?dbs[]=5&dbs[]=41&output_type=2&testmode=1&numres=10&hide=2');
     });
 
